@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  flask:
+    image: flask:cc0050
+    command: waitress-serve --port=80 flask_app:app
+    build: .
+    working_dir: /flask_app
+    volumes:
+      - ./flask_app:/flask_app
+    environment:
+       TZ: America/Fortaleza
+    restart: always
+    ports:
+      - "4006:80"
